@@ -7,7 +7,7 @@ type InstanceState struct {
 	Disk      map[string]InstanceStateDisk    `json:"disk" yaml:"disk"`
 	Memory    InstanceStateMemory             `json:"memory" yaml:"memory"`
 	Network   map[string]InstanceStateNetwork `json:"network" yaml:"network"`
-	Pid       int64                           `json:"pid" yaml:"pid"`
+	PID       int64                           `json:"pid" yaml:"pid"`
 	Processes int64                           `json:"processes" yaml:"processes"`
 
 	// API extension: container_cpu_time
@@ -40,7 +40,7 @@ type InstanceStateNetwork struct {
 	Counters  InstanceStateNetworkCounters  `json:"counters" yaml:"counters"`
 	Hwaddr    string                        `json:"hwaddr" yaml:"hwaddr"`
 	HostName  string                        `json:"host_name" yaml:"host_name"`
-	Mtu       int                           `json:"mtu" yaml:"mtu"`
+	MTU       int                           `json:"mtu" yaml:"mtu"`
 	State     string                        `json:"state" yaml:"state"`
 	Type      string                        `json:"type" yaml:"type"`
 }

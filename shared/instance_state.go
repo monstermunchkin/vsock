@@ -16,7 +16,7 @@ func RenderState() *api.InstanceState {
 		CPU:       cpuState(),
 		Memory:    memoryState(),
 		Network:   networkState(),
-		Pid:       1,
+		PID:       1,
 		Processes: processesState(),
 	}
 }
@@ -78,7 +78,7 @@ func networkState() map[string]api.InstanceStateNetwork {
 		}
 
 		network.Hwaddr = iface.HardwareAddr.String()
-		network.Mtu = iface.MTU
+		network.MTU = iface.MTU
 
 		if iface.Flags&net.FlagUp != 0 {
 			network.State = "up"
