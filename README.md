@@ -10,6 +10,9 @@ Usage of vsock-server:
 ```
 $ vsock-client -h
 Usage of vsock-client:
+
+vsock-client [options] path
+
   -context uint
     	Context ID (default 3)
   -port uint

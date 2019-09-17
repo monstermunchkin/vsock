@@ -7,6 +7,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
 
 	"github.com/mdlayher/vsock"
 )
@@ -20,7 +21,18 @@ func init() {
 }
 
 func main() {
+	flag.Usage = func() {
+		fmt.Printf("Usage of %s:\n\n", os.Args[0])
+		fmt.Printf("%s [options] path\n\n", os.Args[0])
+		flag.PrintDefaults()
+	}
+
 	flag.Parse()
+
+	if len(flag.Args()) != 1 {
+		flag.Usage()
+		os.Exit(2)
+	}
 
 	client := http.Client{
 		Transport: &http.Transport{
@@ -31,7 +43,7 @@ func main() {
 	}
 
 	// New HTTP request
-	resp, err := client.Get("http://vsock/state")
+	resp, err := client.Get(fmt.Sprintf("http://vsock%s", flag.Arg(0)))
 	if err != nil {
 		log.Fatal(err)
 	}
